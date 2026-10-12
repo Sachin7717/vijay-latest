@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vijay High School, Sonipat | Empowering Minds</title>
+    <!-- Tailwind CSS for rapid responsive layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for modern, clean iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.35);
+            --glass-border: rgba(255, 255, 255, 0.45);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-color: #fafcff;
+        }
+
+        h1, h2, h3, h4, .nav-logo {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Animated Pastel Gradient Background */
+        .pastel-gradient-bg {
+            background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #fbc2eb, #a1c4fd);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.05);
+            border-radius: 1.5rem; /* Highly rounded cards */
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        /* Hover Transitions */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Abstract blobs for background depth */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 400px; height: 400px; background: #ff9a9e; }
+        .blob-2 { bottom: -10%; right: -5%; width: 500px; height: 500px; background: #a18cd1; }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-200 selection:text-indigo-900">
+
+    <!-- Navbar -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="nav-logo text-2xl font-bold text-indigo-900 flex items-center gap-2 tracking-tight">
+                <i class="ph-fill ph-student text-indigo-600 text-3xl"></i>
+                Vijay High
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-8 items-center bg-white/40 backdrop-blur-md px-8 py-3 rounded-full border border-white/50 shadow-sm">
+                <a href="#home" class="text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors">Home</a>
+                <a href="#about" class="text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors">About Us</a>
+                <a href="#admissions" class="text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors">Admissions</a>
+                <a href="#academics" class="text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors">Academics</a>
+                <a href="#facilities" class="text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors">Facilities</a>
+                <a href="#contact" class="text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors">Contact</a>
+            </nav>
+
+            <!-- CTA / Mobile Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="#admissions" class="hidden md:inline-flex px-6 py-2.5 rounded-full bg-indigo-600 text-white font-medium text-sm hover:bg-indigo-700 transition-all shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-0.5">
+                    Apply Now
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-800 focus:outline-none p-2 glass-panel rounded-full">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="absolute top-full left-0 w-full px-6 pt-2 pb-6 hidden">
+            <div class="glass-panel rounded-2xl flex flex-col p-4 gap-4">
+                <a href="#home" class="mobile-link text-gray-800 font-medium p-2 hover:bg-white/50 rounded-xl transition-colors">Home</a>
+                <a href="#about" class="mobile-link text-gray-800 font-medium p-2 hover:bg-white/50 rounded-xl transition-colors">About Us</a>
+                <a href="#academics" class="mobile-link text-gray-800 font-medium p-2 hover:bg-white/50 rounded-xl transition-colors">Academics</a>
+                <a href="#facilities" class="mobile-link text-gray-800 font-medium p-2 hover:bg-white/50 rounded-xl transition-colors">Facilities</a>
+                <a href="#contact" class="mobile-link text-gray-800 font-medium p-2 hover:bg-white/50 rounded-xl transition-colors">Contact</a>
+                <a href="#admissions" class="mobile-link text-center px-6 py-3 mt-2 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors">Apply Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Big Carousel -->
+    <section id="home" class="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-12 overflow-hidden pastel-gradient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
+            
+            <div class="text-center mb-10 reveal">
+                <div class="inline-block px-4 py-1.5 rounded-full glass-panel text-indigo-800 text-xs font-semibold uppercase tracking-wider mb-4">
+                    Admissions Open 2026-27
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight text-gray-900 mb-4 drop-shadow-sm">
+                    Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Vijay High School</span>
+                </h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto font-medium">
+                    Empowering Minds, Shaping the Future in Sonipat.
+                </p>
+            </div>
+
+            <!-- Big Carousel -->
+            <div class="relative w-full h-[50vh] md:h-[65vh] min-h-[400px] glass-panel rounded-[2.5rem] overflow-hidden reveal delay-200 group shadow-2xl border-white/60">
+                <!-- Carousel Track -->
+                <div id="carousel-track" class="flex w-full h-full transition-transform duration-700 ease-in-out">
+                    <!-- Slide 1 -->
+                    <div class="min-w-full w-full h-full relative flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Students on Campus" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 md:p-12 text-white">
+                            <h2 class="text-3xl md:text-5xl font-bold mb-3 drop-shadow-md">Vibrant Campus Life</h2>
+                            <p class="md:text-xl text-gray-200 font-light drop-shadow-md">Fostering creativity and collaboration among students.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="min-w-full w-full h-full relative flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="School Building" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 md:p-12 text-white">
+                            <h2 class="text-3xl md:text-5xl font-bold mb-3 drop-shadow-md">State-of-the-Art Infrastructure</h2>
+                            <p class="md:text-xl text-gray-200 font-light drop-shadow-md">A legacy of educational excellence in Haryana.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="min-w-full w-full h-full relative flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Classroom" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 md:p-12 text-white">
+                            <h2 class="text-3xl md:text-5xl font-bold mb-3 drop-shadow-md">Modern Classrooms</h2>
+                            <p class="md:text-xl text-gray-200 font-light drop-shadow-md">Interactive and technology-driven learning environments.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <button id="carousel-prev" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-panel flex items-center justify-center text-white hover:bg-white/30 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20 cursor-pointer">
+                    <i class="ph-bold ph-caret-left text-2xl"></i>
+                </button>
+                <button id="carousel-next" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-panel flex items-center justify-center text-white hover:bg-white/30 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20 cursor-pointer">
+                    <i class="ph-bold ph-caret-right text-2xl"></i>
+                </button>
+
+                <!-- Indicators -->
+                <div id="carousel-indicators" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+                    <button class="indicator w-8 h-3 rounded-full bg-white transition-all shadow-sm"></button>
+                    <button class="indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all shadow-sm"></button>
+                    <button class="indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all shadow-sm"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+<!-- Expanded About Section -->
+<section id="about" class="py-24 relative z-10 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+    
+    <!-- Part 1: Main Overview & Introduction -->
+    <div class="bg-white/30 backdrop-blur-xl border border-white/40 p-8 md:p-14 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] scroll-hidden transition-all duration-1000">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Text -->
+        <div class="space-y-6">
+          <div class="inline-block bg-blue-100/50 backdrop-blur-sm px-4 py-2 rounded-full text-blue-700 font-semibold tracking-wide text-sm mb-2 border border-blue-200/50">
+            Welcome to Vijay High School
+          </div>
+          <h2 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+            Nurturing Excellence in <br />
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Sonipat</span>
+          </h2>
+          <div class="h-1.5 w-24 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
+          <p class="text-lg text-gray-700 leading-relaxed font-medium">
+            Vijay High School is a premier <strong>CBSE-affiliated</strong> institution dedicated to academic brilliance and holistic growth. Serving students up to <strong>Class 12</strong>, we provide a modern, safe, and dynamic environment where every child is encouraged to discover their true potential.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Our campus is equipped with state-of-the-art facilities, but our true strength lies in our highly qualified and <strong>professional teachers</strong>. Through innovative, student-centric methodologies, we ensure that education goes beyond textbooks, preparing students for the challenges of tomorrow.
+          </p>
+          <button class="mt-4 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:shadow-[0_0_20px_rgba(79,70,229,0.5)] transform hover:-translate-y-1 transition-all duration-300">
+            Read Our History
+          </button>
+        </div>
+        <!-- Image -->
+        <div class="relative group h-full min-h-[400px]">
+          <!-- Decorative background blob -->
+          <div class="absolute -inset-4 bg-gradient-to-tr from-blue-400 to-purple-400 rounded-[3rem] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-700"></div>
+          <!-- Main Image (Replace src with actual school building photo) -->
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop" alt="Vijay High School Campus" class="relative w-full h-full object-cover rounded-[2.5rem] shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-700">
+          
+          <!-- Floating Stats Badge -->
+          <div class="absolute -bottom-6 -left-6 bg-white/80 backdrop-blur-md border border-white/60 p-6 rounded-3xl shadow-xl flex items-center gap-4 animate-bounce-slow">
+            <div class="bg-blue-100 p-3 rounded-full text-2xl">🏆</div>
+            <div>
+              <p class="font-extrabold text-2xl text-gray-900">100%</p>
+              <p class="text-sm font-semibold text-gray-600">Board Results</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 2: Vision & Mission (Side by Side Cards) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Vision -->
+      <div class="bg-white/40 backdrop-blur-lg border border-white/50 p-10 rounded-[2.5rem] hover:-translate-y-2 transition-transform duration-500 shadow-lg scroll-hidden group">
+        <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center text-white text-4xl mb-8 transform group-hover:rotate-12 transition-transform duration-300 shadow-lg">
+          👁️
+        </div>
+        <h3 class="text-3xl font-bold text-gray-900 mb-4">Our Vision</h3>
+        <p class="text-gray-700 text-lg leading-relaxed">
+          To be a beacon of educational excellence in Haryana, fostering a generation of lifelong learners who are innovative, compassionate, and equipped with the critical thinking skills necessary to lead in a globalized world.
+        </p>
+      </div>
+      <!-- Mission -->
+      <div class="bg-white/40 backdrop-blur-lg border border-white/50 p-10 rounded-[2.5rem] hover:-translate-y-2 transition-transform duration-500 shadow-lg scroll-hidden group delay-100">
+        <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center text-white text-4xl mb-8 transform group-hover:-rotate-12 transition-transform duration-300 shadow-lg">
+          🎯
+        </div>
+        <h3 class="text-3xl font-bold text-gray-900 mb-4">Our Mission</h3>
+        <p class="text-gray-700 text-lg leading-relaxed">
+          To provide high-quality, holistic education through an integrated CBSE curriculum. We strive to nurture the intellectual, physical, and emotional growth of every student under the guidance of our expert faculty.
+        </p>
+      </div>
+    </div>
+
+    <!-- Part 3: From the Principal's Desk -->
+    <div class="bg-gradient-to-br from-blue-50/50 to-purple-50/50 backdrop-blur-xl border border-white/60 p-8 md:p-14 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] scroll-hidden">
+      <div class="flex flex-col md:flex-row gap-12 items-center">
+        <!-- Principal Image (Replace src) -->
+        <div class="w-full md:w-1/3">
+          <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full blur-lg opacity-40 group-hover:opacity-70 transition-opacity duration-500"></div>
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Principal" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-8 border-white/80 shadow-2xl mx-auto">
+          </div>
+        </div>
+        <!-- Quote Text -->
+        <div class="w-full md:w-2/3 space-y-6">
+          <div class="text-6xl text-blue-300 font-serif leading-none h-10">"</div>
+          <h3 class="text-3xl font-bold text-gray-900">Message from the Principal</h3>
+          <p class="text-xl text-gray-700 italic leading-relaxed">
+            Education is not just about academic supremacy; it is about character building. At Vijay High School, our dedicated teachers act as mentors who sculpt the minds of our youth. We promise a nurturing environment where your child's curiosity is met with modern teaching tools and traditional values.
+          </p>
+          <div>
+            <p class="font-extrabold text-gray-900 text-lg">Dr. A. Sharma</p>
+            <p class="text-gray-500 font-medium">Principal, Vijay High School</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 4: Campus Highlights / Visual Gallery -->
+    <div class="scroll-hidden">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Discover Our Campus</h3>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">A glimpse into the facilities that make our school a second home for students.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Image Card 1 -->
+        <div class="relative group rounded-[2rem] overflow-hidden shadow-lg h-64">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop" alt="Modern Classrooms" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+            <h4 class="text-white font-bold text-xl">Smart Classrooms</h4>
+          </div>
+        </div>
+        <!-- Image Card 2 -->
+        <div class="relative group rounded-[2rem] overflow-hidden shadow-lg h-64">
+          <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=800&auto=format&fit=crop" alt="Library" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+            <h4 class="text-white font-bold text-xl">Expansive Library</h4>
+          </div>
+        </div>
+        <!-- Image Card 3 -->
+        <div class="relative group rounded-[2rem] overflow-hidden shadow-lg h-64">
+          <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?q=80&w=800&auto=format&fit=crop" alt="Science Labs" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+            <h4 class="text-white font-bold text-xl">Hi-Tech Laboratories</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Admissions Section -->
+ <!-- Admissions Section -->
+<section id="admissions" class="py-24 relative z-10 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
+    
+    <!-- ==========================================
+         PAGE 1: ADMISSIONS HERO & OVERVIEW
+         ========================================== -->
+    <div class="bg-white/30 backdrop-blur-xl border border-white/40 p-8 md:p-14 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] scroll-hidden transition-all duration-1000">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 bg-green-100/50 backdrop-blur-sm px-5 py-2 rounded-full text-green-700 font-semibold tracking-wide text-sm border border-green-200/50 animate-pulse">
+            <span class="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
+            Admissions Open for Session 2027-2028
+          </div>
+          
+          <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+            Join the <br />
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Vijay High School</span> <br />Family.
+          </h2>
+          <div class="h-1.5 w-24 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
+          
+          <p class="text-xl text-gray-700 leading-relaxed font-medium">
+            We are looking for curious minds and passionate learners. Embark on a transformative educational journey in a vibrant, safe, and modern CBSE-affiliated environment.
+          </p>
+          
+          <div class="flex flex-wrap gap-4 pt-4">
+            <!-- ADDED: onclick="openAdmissionModal()" -->
+            <button onclick="openAdmissionModal()" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full shadow-lg hover:shadow-[0_10px_40px_rgba(79,70,229,0.5)] transform hover:-translate-y-2 hover:scale-105 transition-all duration-300">
+              Apply Online Now
+            </button>
+            <button class="px-8 py-4 bg-white/50 text-blue-700 font-bold rounded-full border border-blue-200 hover:bg-white hover:shadow-xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+              Download Prospectus
+            </button>
+          </div>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="relative group w-full h-[500px] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(8,112,184,0.2)]">
+          <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 z-10 group-hover:opacity-0 transition-opacity duration-700"></div>
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1200&auto=format&fit=crop" alt="Happy students" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
+          
+          <!-- Floating Info Card -->
+          <div class="absolute bottom-6 left-6 right-6 z-20 bg-white/90 backdrop-blur-md border border-white/50 p-6 rounded-3xl shadow-2xl transform group-hover:-translate-y-4 transition-transform duration-500">
+            <p class="font-bold text-gray-900 text-lg mb-1">Limited Seats Available</p>
+            <p class="text-gray-600 text-sm">Admissions are granted on a first-come, first-served basis based on availability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 2: THE PROCESS & DOCUMENTS (Enhanced Pop-out)
+         ========================================== -->
+    <div class="space-y-16">
+      
+      <!-- Step-by-step Process -->
+      <div class="scroll-hidden">
+        <div class="text-center mb-12">
+          <h3 class="text-4xl font-extrabold text-gray-900 mb-4">A Seamless Admission Process</h3>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">We've made joining our school simple and transparent. Follow these steps to secure your child's future.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          <!-- Connector line -->
+          <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-300 to-purple-300 -translate-y-1/2 z-0 opacity-50"></div>
+
+          <!-- ENHANCED CARDS: Added higher scale, deeper shadows, and strong translate-y for dramatic pop-out -->
+          <div class="relative z-10 bg-white/60 backdrop-blur-xl border-2 border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-[0_20px_40px_rgba(31,38,135,0.15)] hover:-translate-y-6 hover:scale-105 transition-all duration-500 group cursor-pointer">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl font-bold mb-6 border border-blue-200 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-md">01</div>
+            <h4 class="font-bold text-gray-900 text-xl mb-3">Registration</h4>
+            <p class="text-gray-700 text-sm">Fill out the online application form or collect it from the school reception.</p>
+          </div>
+
+          <div class="relative z-10 bg-white/60 backdrop-blur-xl border-2 border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-[0_20px_40px_rgba(31,38,135,0.15)] hover:-translate-y-6 hover:scale-105 transition-all duration-500 group delay-100 cursor-pointer">
+            <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 text-2xl font-bold mb-6 border border-purple-200 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-md">02</div>
+            <h4 class="font-bold text-gray-900 text-xl mb-3">Interaction</h4>
+            <p class="text-gray-700 text-sm">A brief, informal interaction for primary students, and an entrance test for Class 6+.</p>
+          </div>
+
+          <div class="relative z-10 bg-white/60 backdrop-blur-xl border-2 border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-[0_20px_40px_rgba(31,38,135,0.15)] hover:-translate-y-6 hover:scale-105 transition-all duration-500 group delay-200 cursor-pointer">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl font-bold mb-6 border border-blue-200 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-md">03</div>
+            <h4 class="font-bold text-gray-900 text-xl mb-3">Document Check</h4>
+            <p class="text-gray-700 text-sm">Submit the required documents at the admissions office for verification.</p>
+          </div>
+
+          <div class="relative z-10 bg-white/60 backdrop-blur-xl border-2 border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-[0_20px_40px_rgba(31,38,135,0.15)] hover:-translate-y-6 hover:scale-105 transition-all duration-500 group delay-300 cursor-pointer">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-2xl font-bold mb-6 border border-green-200 group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all duration-300 shadow-md">04</div>
+            <h4 class="font-bold text-gray-900 text-xl mb-3">Fee Submission</h4>
+            <p class="text-gray-700 text-sm">Deposit the admission fee to confirm the enrollment and collect the kit.</p>
+          </div>
+        </div>
+      </div>
+      
+      
+
+<!-- ==========================================
+     MODAL POPUP: ADMISSION SCHEDULING
+     ========================================== -->
+<div id="admissionModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 px-4">
+  <!-- Blurred Background Overlay -->
+  <div class="absolute inset-0 bg-gray-900/40 backdrop-blur-md" onclick="closeAdmissionModal()"></div>
+  
+  <!-- Modal Card -->
+  <div id="modalCard" class="relative bg-white/70 backdrop-blur-2xl border border-white p-8 md:p-10 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.2)] w-full max-w-2xl transform scale-95 transition-transform duration-500">
+    
+    <!-- Close Button -->
+    <button onclick="closeAdmissionModal()" class="absolute top-6 right-6 w-10 h-10 bg-white/50 rounded-full flex items-center justify-center text-gray-600 hover:bg-red-100 hover:text-red-600 hover:rotate-90 transition-all duration-300 shadow-sm border border-white">
+      ✕
+    </button>
+
+    <div class="text-center mb-8">
+      <h3 class="text-3xl font-extrabold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Schedule Admission Session</h3>
+      <p class="text-gray-600 mt-2">Enter your basic details and we will reserve a slot for your campus visit.</p>
+    </div>
+
+    <!-- Form -->
+    <form class="space-y-5" onsubmit="event.preventDefault(); alert('Session Scheduled! We will contact you shortly.'); closeAdmissionModal();">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Student Name -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Student's Full Name</label>
+          <input type="text" required class="w-full px-5 py-3 rounded-xl border border-white bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all shadow-inner" placeholder="John Doe">
+        </div>
+        <!-- Parent Name -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Parent's Full Name</label>
+          <input type="text" required class="w-full px-5 py-3 rounded-xl border border-white bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all shadow-inner" placeholder="Jane Doe">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Phone -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
+          <input type="tel" required class="w-full px-5 py-3 rounded-xl border border-white bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all shadow-inner" placeholder="+91 98765 43210">
+        </div>
+        <!-- Class Applied For -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Applying For Class</label>
+          <select required class="w-full px-5 py-3 rounded-xl border border-white bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all shadow-inner text-gray-700">
+            <option value="" disabled selected>Select Class</option>
+            <option>Nursery / LKG / UKG</option>
+            <option>Class 1 to 5 (Primary)</option>
+            <option>Class 6 to 8 (Middle)</option>
+            <option>Class 9 to 10 (Secondary)</option>
+            <option>Class 11 (Senior Secondary)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Preferred Date -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Preferred Date for Visit/Interaction</label>
+        <input type="date" required class="w-full px-5 py-3 rounded-xl border border-white bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all shadow-inner text-gray-700">
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full mt-4 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg font-bold rounded-xl shadow-lg hover:shadow-[0_10px_30px_rgba(79,70,229,0.4)] transform hover:-translate-y-1 transition-all duration-300">
+        Confirm Scheduling
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<!-- Add this script anywhere at the bottom of your HTML body -->
+<script>
+  function openAdmissionModal() {
+    const modal = document.getElementById('admissionModal');
+    const card = document.getElementById('modalCard');
+    
+    // Show modal container
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    // Pop-in animation for card
+    card.classList.remove('scale-95');
+    card.classList.add('scale-100');
+  }
+
+  function closeAdmissionModal() {
+    const modal = document.getElementById('admissionModal');
+    const card = document.getElementById('modalCard');
+    
+    // Hide modal container
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    // Shrink animation for card
+    card.classList.remove('scale-100');
+    card.classList.add('scale-95');
+  }
+</script>
+
+      <!-- Required Documents -->
+      <div class="bg-gradient-to-br from-purple-50/40 to-blue-50/40 backdrop-blur-xl border border-white/60 p-8 md:p-12 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] scroll-hidden">
+        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Required Documents</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="flex items-center gap-4 bg-white/60 p-4 rounded-2xl border border-white hover:bg-white transition-colors duration-300">
+            <div class="text-3xl">📄</div>
+            <p class="font-semibold text-gray-800">Birth Certificate (Municipal Corp)</p>
+          </div>
+          <div class="flex items-center gap-4 bg-white/60 p-4 rounded-2xl border border-white hover:bg-white transition-colors duration-300">
+            <div class="text-3xl">🪪</div>
+            <p class="font-semibold text-gray-800">Aadhar Card (Student & Parents)</p>
+          </div>
+          <div class="flex items-center gap-4 bg-white/60 p-4 rounded-2xl border border-white hover:bg-white transition-colors duration-300">
+            <div class="text-3xl">📸</div>
+            <p class="font-semibold text-gray-800">4 Passport Size Photographs</p>
+          </div>
+          <div class="flex items-center gap-4 bg-white/60 p-4 rounded-2xl border border-white hover:bg-white transition-colors duration-300">
+            <div class="text-3xl">🏫</div>
+            <p class="font-semibold text-gray-800">Previous Year Marksheet</p>
+          </div>
+          <div class="flex items-center gap-4 bg-white/60 p-4 rounded-2xl border border-white hover:bg-white transition-colors duration-300">
+            <div class="text-3xl">✈️</div>
+            <p class="font-semibold text-gray-800">Transfer Certificate (Original)</p>
+          </div>
+          <div class="flex items-center gap-4 bg-white/60 p-4 rounded-2xl border border-white hover:bg-white transition-colors duration-300">
+            <div class="text-3xl">🩺</div>
+            <p class="font-semibold text-gray-800">Medical Fitness Certificate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 3: ELIGIBILITY & CALL TO ACTION
+         ========================================== -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 scroll-hidden">
+      
+      <!-- Eligibility Criteria Table/Cards -->
+      <div class="lg:col-span-2 bg-white/40 backdrop-blur-xl border border-white/60 p-8 md:p-12 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)]">
+        <h3 class="text-3xl font-bold text-gray-900 mb-6">Eligibility & Age Criteria</h3>
+        <p class="text-gray-600 mb-8">As per CBSE guidelines, the following age limits apply (as of March 31st of the academic year):</p>
+        
+        <div class="space-y-4">
+          <!-- Row 1 -->
+          <div class="flex justify-between items-center bg-white/50 p-5 rounded-2xl border border-white/80 hover:scale-[1.02] transition-transform duration-300">
+            <div>
+              <h4 class="font-bold text-gray-900 text-lg">Nursery</h4>
+              <p class="text-sm text-gray-500">Foundational Stage</p>
+            </div>
+            <div class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-bold">3+ Years</div>
+          </div>
+          <!-- Row 2 -->
+          <div class="flex justify-between items-center bg-white/50 p-5 rounded-2xl border border-white/80 hover:scale-[1.02] transition-transform duration-300">
+            <div>
+              <h4 class="font-bold text-gray-900 text-lg">LKG & UKG</h4>
+              <p class="text-sm text-gray-500">Preparatory Stage</p>
+            </div>
+            <div class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full font-bold">4+ & 5+ Years</div>
+          </div>
+          <!-- Row 3 -->
+          <div class="flex justify-between items-center bg-white/50 p-5 rounded-2xl border border-white/80 hover:scale-[1.02] transition-transform duration-300">
+            <div>
+              <h4 class="font-bold text-gray-900 text-lg">Class 1 to Class 9</h4>
+              <p class="text-sm text-gray-500">Based on successful completion of previous class</p>
+            </div>
+            <div class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-bold">6+ Years onwards</div>
+          </div>
+          <!-- Row 4 -->
+          <div class="flex justify-between items-center bg-white/50 p-5 rounded-2xl border border-white/80 hover:scale-[1.02] transition-transform duration-300">
+            <div>
+              <h4 class="font-bold text-gray-900 text-lg">Class 11</h4>
+              <p class="text-sm text-gray-500">Merit-based admission after Class 10 Board results</p>
+            </div>
+            <div class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full font-bold">Merit Based</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Important Dates & Contact -->
+      <div class="space-y-8">
+        <!-- Dates Card -->
+        <div class="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-[2.5rem] shadow-xl text-white transform hover:-translate-y-2 transition-transform duration-500">
+          <h3 class="text-2xl font-bold mb-6">📅 Important Dates</h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between border-b border-white/20 pb-2">
+              <span class="text-white/80">Forms Available</span>
+              <span class="font-bold">Oct 15, 2026</span>
+            </li>
+            <li class="flex justify-between border-b border-white/20 pb-2">
+              <span class="text-white/80">Last Date to Apply</span>
+              <span class="font-bold">Dec 15, 2026</span>
+            </li>
+            <li class="flex justify-between border-b border-white/20 pb-2">
+              <span class="text-white/80">Interaction Dates</span>
+              <span class="font-bold">Jan 2nd Week</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="text-white/80">Session Begins</span>
+              <span class="font-bold">April 1, 2027</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact/Help Card -->
+        <div class="bg-white/40 backdrop-blur-xl border border-white/60 p-8 rounded-[2.5rem] shadow-lg">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Need Help?</h3>
+          <p class="text-gray-600 text-sm mb-6">Our admissions counselors are available Monday to Saturday, 8:00 AM to 3:00 PM to assist you.</p>
+          <div class="space-y-3">
+            <a href="tel:+919876543210" class="flex items-center gap-3 text-gray-800 font-semibold hover:text-blue-600 transition-colors">
+              <span class="bg-white p-2 rounded-full shadow-sm text-lg">📞</span> +91 98765 43210
+            </a>
+            <a href="mailto:admissions@vijayhighschool.com" class="flex items-center gap-3 text-gray-800 font-semibold hover:text-blue-600 transition-colors">
+              <span class="bg-white p-2 rounded-full shadow-sm text-lg">✉️</span> admissions@vhs.edu
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+ <!-- Academics Section -->
+    <!-- Academics Section -->
+<section id="academics" class="py-24 relative z-10 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
+    
+    <!-- Part 1: Academics Hero / Overview -->
+    <div class="bg-white/30 backdrop-blur-xl border border-white/40 p-8 md:p-14 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] scroll-hidden transition-all duration-1000">
+      <div class="text-center mb-16">
+        <div class="inline-block bg-purple-100/50 backdrop-blur-sm px-5 py-2 rounded-full text-purple-700 font-semibold tracking-wide text-sm mb-4 border border-purple-200/50">
+          Excellence in Education
+        </div>
+        <h2 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+          A World-Class Academic Experience
+        </h2>
+        <div class="h-1.5 w-32 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto mb-8"></div>
+        <p class="text-lg md:text-2xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+          Vijay High School offers a highly enriching, <strong>English-medium</strong> curriculum from the foundational years up to <strong>Class 12</strong>. We believe in multidimensional learning that challenges intellect, sparks creativity, and prepares students for global success.
+        </p>
+      </div>
+
+      <!-- Feature Image -->
+      <div class="relative group w-full h-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 z-10 group-hover:opacity-0 transition-opacity duration-700"></div>
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1600&auto=format&fit=crop" alt="Rich Learning Environment" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000">
+        <!-- Floating Tag -->
+        <div class="absolute bottom-8 right-8 z-20 bg-white/90 backdrop-blur-md border border-white p-4 rounded-2xl shadow-xl animate-bounce-slow">
+          <p class="font-bold text-gray-900 text-lg">💡 High Rich Learning Environment</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 2: The Academic Journey (Alternating Layout) -->
+    <div class="space-y-24 relative">
+      <!-- Decorative background line -->
+      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-300 via-purple-300 to-transparent -translate-x-1/2 opacity-30"></div>
+
+      <!-- Stage 1: Primary Education -->
+      <div class="flex flex-col lg:flex-row items-center gap-12 scroll-hidden group">
+        <div class="w-full lg:w-1/2 lg:pr-12 text-center lg:text-right">
+          <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Foundational Years</h3>
+          <h4 class="text-xl text-blue-600 font-semibold mb-4">Pre-Primary to Class 5</h4>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            Our primary curriculum focuses on curiosity-driven learning. We use play-way methods, interactive storytelling, and activity-based learning to build strong foundations in English, Mathematics, and Environmental Sciences, ensuring children fall in love with learning from day one.
+          </p>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <div class="relative p-2 bg-white/40 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-white/50 transform group-hover:-translate-y-2 transition-all duration-500">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop" alt="Primary Education" class="w-full h-72 object-cover rounded-[2rem]">
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 2: Middle School -->
+      <div class="flex flex-col lg:flex-row-reverse items-center gap-12 scroll-hidden group">
+        <div class="w-full lg:w-1/2 lg:pl-12 text-center lg:text-left">
+          <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Middle School</h3>
+          <h4 class="text-xl text-purple-600 font-semibold mb-4">Class 6 to Class 8</h4>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            As students transition to middle school, learning becomes more structured yet highly interactive. We introduce conceptual depth in Sciences and Humanities, robust English language development, and foundational computer coding. Students engage in project-based learning to develop critical thinking and problem-solving skills.
+          </p>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <div class="relative p-2 bg-white/40 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-white/50 transform group-hover:-translate-y-2 transition-all duration-500">
+            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=800&auto=format&fit=crop" alt="Middle School" class="w-full h-72 object-cover rounded-[2rem]">
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 3: Senior Secondary -->
+      <div class="flex flex-col lg:flex-row items-center gap-12 scroll-hidden group">
+        <div class="w-full lg:w-1/2 lg:pr-12 text-center lg:text-right">
+          <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Senior Secondary (CBSE)</h3>
+          <h4 class="text-xl text-blue-600 font-semibold mb-4">Class 9 to Class 12</h4>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            The pinnacle of school education. We offer comprehensive streams including <strong>Science (Medical/Non-Medical), Commerce, and Humanities</strong>. Our expert faculty provides rigorous board-focused training alongside competitive exam preparation in a premium, stress-free environment.
+          </p>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <div class="relative p-2 bg-white/40 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-white/50 transform group-hover:-translate-y-2 transition-all duration-500">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" alt="Senior Secondary" class="w-full h-72 object-cover rounded-[2rem]">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 3: Our Pedagogy (Glass Cards) -->
+    <div class="bg-gradient-to-br from-blue-50/40 to-purple-50/40 backdrop-blur-2xl border border-white/60 p-8 md:p-14 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] scroll-hidden">
+      <div class="text-center mb-16">
+        <h3 class="text-4xl font-bold text-gray-900 mb-4">What Makes Our Learning Environment Different?</h3>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">We don't just teach syllabus; we cultivate minds. Our teaching methodology is designed for the 21st-century learner.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white/50 backdrop-blur-md border border-white/70 p-8 rounded-3xl hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl group">
+          <div class="text-4xl mb-6 transform group-hover:scale-125 transition-transform duration-300">🗣️</div>
+          <h4 class="font-bold text-gray-900 text-xl mb-3">100% English Medium</h4>
+          <p class="text-gray-700 text-sm leading-relaxed">Immersive language environment focusing on fluency, vocabulary, and confident public speaking from day one.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white/50 backdrop-blur-md border border-white/70 p-8 rounded-3xl hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl group delay-100">
+          <div class="text-4xl mb-6 transform group-hover:scale-125 transition-transform duration-300">🧪</div>
+          <h4 class="font-bold text-gray-900 text-xl mb-3">Experiential Learning</h4>
+          <p class="text-gray-700 text-sm leading-relaxed">Moving beyond rote learning with hands-on lab experiments, field trips, and real-world project applications.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white/50 backdrop-blur-md border border-white/70 p-8 rounded-3xl hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl group delay-200">
+          <div class="text-4xl mb-6 transform group-hover:scale-125 transition-transform duration-300">💻</div>
+          <h4 class="font-bold text-gray-900 text-xl mb-3">Tech-Integrated</h4>
+          <p class="text-gray-700 text-sm leading-relaxed">Smart boards, digital libraries, and modern computer labs ensure students are technologically fluent.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="bg-white/50 backdrop-blur-md border border-white/70 p-8 rounded-3xl hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl group delay-300">
+          <div class="text-4xl mb-6 transform group-hover:scale-125 transition-transform duration-300">🧠</div>
+          <h4 class="font-bold text-gray-900 text-xl mb-3">Holistic Focus</h4>
+          <p class="text-gray-700 text-sm leading-relaxed">Equal emphasis on emotional intelligence, moral values, arts, and physical education alongside academics.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 4: Premium Academic Gallery -->
+    <div class="scroll-hidden pt-12">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">State-of-the-Art Facilities</h3>
+        <p class="text-gray-600 text-lg">A peek into our premium learning spaces.</p>
+      </div>
+
+      <!-- Masonry-style Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Large Image (Spans 2 columns on desktop) -->
+        <div class="md:col-span-2 relative group rounded-[2.5rem] overflow-hidden shadow-xl h-80">
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1200&auto=format&fit=crop" alt="Premium Library" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <h4 class="text-white font-bold text-2xl mb-1">Extensive Digital Library</h4>
+            <p class="text-white/80">Thousands of books, journals, and digital resources.</p>
+          </div>
+        </div>
+
+        <!-- Small Image 1 -->
+        <div class="relative group rounded-[2.5rem] overflow-hidden shadow-xl h-80">
+          <img src="https://images.unsplash.com/photo-1564069114553-7215e1ff1890?q=80&w=800&auto=format&fit=crop" alt="Tech Labs" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+            <h4 class="text-white font-bold text-xl mb-1">Advanced Computer Labs</h4>
+            <p class="text-white/80 text-sm">Coding and modern tech education.</p>
+          </div>
+        </div>
+
+        <!-- Small Image 2 -->
+        <div class="relative group rounded-[2.5rem] overflow-hidden shadow-xl h-80">
+          <img src="https://images.unsplash.com/photo-1460518451285-84e50882e38c?q=80&w=800&auto=format&fit=crop" alt="Arts and Crafts" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+            <h4 class="text-white font-bold text-xl mb-1">Creative Arts Studio</h4>
+            <p class="text-white/80 text-sm">Fostering imagination and design.</p>
+          </div>
+        </div>
+
+        <!-- Large Image (Spans 2 columns on desktop) -->
+        <div class="md:col-span-2 relative group rounded-[2.5rem] overflow-hidden shadow-xl h-80">
+          <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?q=80&w=1200&auto=format&fit=crop" alt="Science Labs" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <h4 class="text-white font-bold text-2xl mb-1">Modern Science Laboratories</h4>
+            <p class="text-white/80">Fully equipped Physics, Chemistry, and Biology labs.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Facilities Section -->
+<section id="facilities" class="py-24 relative z-10 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
+    
+    <!-- ==========================================
+         PAGE 1: INFRASTRUCTURE HERO & OVERVIEW
+         ========================================== -->
+    <div class="bg-white/30 backdrop-blur-xl border border-white/40 p-8 md:p-14 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] scroll-hidden transition-all duration-1000">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 bg-blue-100/50 backdrop-blur-sm px-5 py-2 rounded-full text-blue-700 font-semibold tracking-wide text-sm border border-blue-200/50">
+            ✨ World-Class Infrastructure
+          </div>
+          
+          <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+            A Campus Built for <br />
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Future Leaders.</span>
+          </h2>
+          <div class="h-1.5 w-24 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
+          
+          <p class="text-xl text-gray-700 leading-relaxed font-medium">
+            At Vijay High School, we provide a rich, safe, and technologically advanced environment. Our state-of-the-art facilities are designed to inspire creativity, foster holistic wellness, and nurture academic excellence.
+          </p>
+          
+          <div class="flex gap-4 pt-4">
+            <button class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full shadow-lg hover:shadow-[0_10px_40px_rgba(79,70,229,0.5)] transform hover:-translate-y-2 hover:scale-105 transition-all duration-300">
+              Take a Virtual Tour
+            </button>
+          </div>
+        </div>
+
+        <!-- Featured Image with 3D Pop-out -->
+        <div class="relative group w-full h-[500px] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(8,112,184,0.2)]">
+          <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 z-10 group-hover:opacity-0 transition-opacity duration-700"></div>
+          <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1200&auto=format&fit=crop" alt="Campus Overview" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
+          
+          <!-- Floating Feature Tag 1 -->
+          <div class="absolute top-8 left-8 z-20 bg-white/90 backdrop-blur-md border border-white/50 p-4 rounded-2xl shadow-2xl transform group-hover:-translate-y-4 group-hover:-translate-x-2 transition-transform duration-500 animate-bounce-slow">
+            <p class="font-bold text-gray-900">🌿 10+ Acres</p>
+            <p class="text-gray-600 text-xs">Lush Green Campus</p>
+          </div>
+
+          <!-- Floating Feature Tag 2 -->
+          <div class="absolute bottom-8 right-8 z-20 bg-white/90 backdrop-blur-md border border-white/50 p-4 rounded-2xl shadow-2xl transform group-hover:-translate-y-4 group-hover:translate-x-2 transition-transform duration-500">
+            <p class="font-bold text-gray-900">📶 100% Wi-Fi</p>
+            <p class="text-gray-600 text-xs">Smart Connected Campus</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 2: ACADEMIC & INNOVATION HUB (BENTO GRID)
+         ========================================== -->
+    <div class="scroll-hidden space-y-12">
+      <div class="text-center">
+        <h3 class="text-4xl font-extrabold text-gray-900 mb-4">Academic & Innovation Hub</h3>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Spaces engineered for deep focus, collaboration, and hands-on scientific discovery.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[600px]">
+        <!-- Large Card: Smart Classrooms -->
+        <div class="md:col-span-2 md:row-span-2 relative group rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-[0_20px_50px_rgba(31,38,135,0.2)] hover:-translate-y-2 transition-all duration-500 border-2 border-white/50 cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1200&auto=format&fit=crop" alt="Smart Classrooms" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 w-full">
+            <div class="bg-blue-600/90 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center text-white text-2xl mb-4 group-hover:-translate-y-2 transition-transform duration-300">🖥️</div>
+            <h4 class="text-3xl font-bold text-white mb-2">Interactive Smart Classrooms</h4>
+            <p class="text-white/80 max-w-md">Fully air-conditioned, ergonomically designed classrooms equipped with digital smart boards, projectors, and premium acoustic paneling.</p>
+          </div>
+        </div>
+
+        <!-- Small Card 1: Labs -->
+        <div class="relative group rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-[0_20px_50px_rgba(31,38,135,0.2)] hover:-translate-y-2 transition-all duration-500 border-2 border-white/50 cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=800&auto=format&fit=crop" alt="Science Labs" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6">
+            <div class="bg-purple-600/90 backdrop-blur-sm w-10 h-10 rounded-xl flex items-center justify-center text-white text-xl mb-3 group-hover:-translate-y-2 transition-transform duration-300">🔬</div>
+            <h4 class="text-xl font-bold text-white mb-1">Advanced Science Labs</h4>
+            <p class="text-white/80 text-sm">Dedicated ultra-safe labs for Physics, Chemistry, and Biology.</p>
+          </div>
+        </div>
+
+        <!-- Small Card 2: Library -->
+        <div class="relative group rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-[0_20px_50px_rgba(31,38,135,0.2)] hover:-translate-y-2 transition-all duration-500 border-2 border-white/50 cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=800&auto=format&fit=crop" alt="Digital Library" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6">
+            <div class="bg-green-600/90 backdrop-blur-sm w-10 h-10 rounded-xl flex items-center justify-center text-white text-xl mb-3 group-hover:-translate-y-2 transition-transform duration-300">📚</div>
+            <h4 class="text-xl font-bold text-white mb-1">Expansive Library</h4>
+            <p class="text-white/80 text-sm">Over 15,000 physical books, e-journals, and quiet reading zones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 3: SPORTS, YOGA & WELLNESS
+         ========================================== -->
+    <div class="space-y-8 scroll-hidden">
+      <div class="text-center mb-12">
+        <h3 class="text-4xl font-extrabold text-gray-900 mb-4">Physical Education & Mindfulness</h3>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Balancing high-energy sports with inner peace and mental wellness.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Sports Complex -->
+        <div class="bg-white/40 backdrop-blur-xl border border-white/60 p-8 rounded-[3rem] shadow-lg group hover:-translate-y-2 transition-all duration-500">
+          <div class="relative rounded-[2rem] overflow-hidden h-64 mb-6 shadow-md">
+            <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=800&auto=format&fit=crop" alt="Sports Complex" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+          </div>
+          <h4 class="text-2xl font-bold text-gray-900 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">Mega Sports Complex</h4>
+          <p class="text-gray-700 mb-4">A massive athletic hub featuring a FIFA-standard football field, synthetic basketball courts, and an indoor arena.</p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-gray-800 text-sm font-semibold"><span class="text-blue-500">⚽</span> Turf Football & Cricket Nets</li>
+            <li class="flex items-center gap-2 text-gray-800 text-sm font-semibold"><span class="text-blue-500">🏀</span> Synthetic Basketball Courts</li>
+          </ul>
+        </div>
+
+        <!-- Yoga & Wellness Studio -->
+        <div class="bg-white/40 backdrop-blur-xl border border-white/60 p-8 rounded-[3rem] shadow-lg group hover:-translate-y-2 transition-all duration-500">
+          <div class="relative rounded-[2rem] overflow-hidden h-64 mb-6 shadow-md">
+            <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=800&auto=format&fit=crop" alt="Yoga Studio" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+          </div>
+          <h4 class="text-2xl font-bold text-gray-900 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">Serene Yoga & Wellness Studio</h4>
+          <p class="text-gray-700 mb-4">A dedicated, tranquil space designed for meditation, flexibility, and mindfulness to help students manage academic stress.</p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-gray-800 text-sm font-semibold"><span class="text-purple-500">🧘‍♀️</span> Certified Yoga Instructors</li>
+            <li class="flex items-center gap-2 text-gray-800 text-sm font-semibold"><span class="text-purple-500">🌿</span> Soundproof, Natural Light Environment</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 4: PAPERBUDDY DIGITAL ECOSYSTEM
+         ========================================== -->
+    <div class="relative scroll-hidden group">
+      <!-- Deep Glassmorphism Container for Tech Section -->
+      <div class="bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 rounded-[3rem] p-8 md:p-14 shadow-2xl relative overflow-hidden border border-white/20">
+        
+        <!-- Animated Background Blurs -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/30 rounded-full blur-[100px] animate-pulse"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/30 rounded-full blur-[100px] animate-pulse delay-500"></div>
+
+        <div class="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+          
+          <!-- Text & Features -->
+          <div class="w-full lg:w-3/5 space-y-8">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full text-blue-200 font-semibold tracking-wide text-sm border border-white/20">
+              📱 Official School Platform
+            </div>
+            
+            <h3 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Powered by <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">PaperBuddy</span>
+            </h3>
+            <p class="text-lg text-blue-100/80 font-light leading-relaxed">
+              Vijay High School is entirely digitized. We utilize the <strong>PaperBuddy</strong> app ecosystem to ensure a seamless, transparent, and paperless experience. Parents and students stay connected to the campus 24/7 through an incredibly smooth, modern mobile interface.
+            </p>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              
+              <!-- Feature 1 -->
+              <div class="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl hover:bg-white/20 transition-colors duration-300">
+                <div class="text-2xl mb-2">🪪</div>
+                <h4 class="text-white font-bold mb-1">Smart RFID Attendance</h4>
+                <p class="text-blue-100/70 text-sm">Automated terminal check-ins instantly push attendance notifications to parents' devices.</p>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl hover:bg-white/20 transition-colors duration-300">
+                <div class="text-2xl mb-2">📊</div>
+                <h4 class="text-white font-bold mb-1">Live Academic Tracking</h4>
+                <p class="text-blue-100/70 text-sm">Monitor grades, assignments, and test scores in real-time through intuitive visual charts.</p>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl hover:bg-white/20 transition-colors duration-300">
+                <div class="text-2xl mb-2">💳</div>
+                <h4 class="text-white font-bold mb-1">Fee Management</h4>
+                <p class="text-blue-100/70 text-sm">Secure, one-tap tuition payments and digital receipt generation straight from the app.</p>
+              </div>
+
+              <!-- Feature 4 -->
+              <div class="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl hover:bg-white/20 transition-colors duration-300">
+                <div class="text-2xl mb-2">💬</div>
+                <h4 class="text-white font-bold mb-1">Instant Communication</h4>
+                <p class="text-blue-100/70 text-sm">Direct, secure messaging between parents and teachers for regular progress updates.</p>
+              </div>
+            </div>
+
+            <p class="text-blue-200/90 font-medium text-lg mt-4 italic">
+              "The PaperBuddy ecosystem ensures you never miss a beat in your child's educational journey."
+            </p>
+          </div>
+
+          <!-- Abstract App Mockup / Visual -->
+          <div class="w-full lg:w-2/5 flex justify-center perspective-1000">
+            <!-- Glass Mockup Phone -->
+            <div class="relative w-72 h-[550px] bg-white/10 backdrop-blur-2xl border border-white/30 rounded-[3rem] shadow-[0_0_50px_rgba(79,70,229,0.4)] p-4 transform rotate-y-[-15deg] group-hover:rotate-y-0 transition-transform duration-1000">
+              <!-- Screen -->
+              <div class="w-full h-full bg-gradient-to-b from-gray-50 to-gray-200 rounded-[2.2rem] overflow-hidden relative shadow-inner p-4 flex flex-col gap-4">
+                <!-- App Header -->
+                <div class="flex justify-between items-center mb-2">
+                  <div class="w-10 h-10 bg-blue-500 rounded-full"></div>
+                  <div class="w-24 h-4 bg-gray-300 rounded-full"></div>
+                </div>
+                <!-- Welcome Card -->
+                <div class="w-full h-32 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl shadow-lg p-4 flex flex-col justify-end">
+                  <div class="w-3/4 h-4 bg-white/80 rounded-full mb-2"></div>
+                  <div class="w-1/2 h-3 bg-white/60 rounded-full"></div>
+                </div>
+                <!-- Data Grid -->
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="h-24 bg-white rounded-2xl shadow-sm border border-gray-100"></div>
+                  <div class="h-24 bg-white rounded-2xl shadow-sm border border-gray-100"></div>
+                  <div class="h-24 bg-white rounded-2xl shadow-sm border border-gray-100"></div>
+                  <div class="h-24 bg-white rounded-2xl shadow-sm border border-gray-100"></div>
+                </div>
+                <!-- Floating Notification -->
+                <div class="absolute bottom-6 left-4 right-4 bg-white/90 backdrop-blur-md rounded-xl p-3 shadow-xl border border-gray-200 flex items-center gap-3 animate-bounce-slow">
+                  <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-xs">✅</div>
+                  <div class="w-2/3 h-3 bg-gray-300 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 5: SUPPORT SERVICES
+         ========================================== -->
+    <div class="scroll-hidden">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Essential Campus Services</h3>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Ensuring safety, nutrition, and convenience for every student.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-white/60 backdrop-blur-xl border-2 border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-[0_20px_40px_rgba(31,38,135,0.15)] hover:-translate-y-6 hover:scale-105 transition-all duration-500 group cursor-pointer text-center">
+          <div class="w-20 h-20 mx-auto bg-yellow-100 rounded-[1.5rem] flex items-center justify-center text-4xl mb-6 shadow-sm group-hover:rotate-12 transition-transform duration-300">🚌</div>
+          <h4 class="font-bold text-gray-900 text-xl mb-3">Safe Transport</h4>
+          <p class="text-gray-700 text-sm">A fleet of AC buses equipped with GPS tracking, CCTV cameras, and female attendants covering all of Sonipat.</p>
+        </div>
+
+        <div class="bg-white/60 backdrop-blur-xl border-2 border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-[0_20px_40px_rgba(31,38,135,0.15)] hover:-translate-y-6 hover:scale-105 transition-all duration-500 group delay-100 cursor-pointer text-center">
+          <div class="w-20 h-20 mx-auto bg-red-100 rounded-[1.5rem] flex items-center justify-center text-4xl mb-6 shadow-sm group-hover:rotate-12 transition-transform duration-300">⚕️</div>
+          <h4 class="font-bold text-gray-900 text-xl mb-3">Medical Infirmary</h4>
+          <p class="text-gray-700 text-sm">A clinic on campus with a full-time certified nurse and an on-call pediatrician for emergencies.</p>
+        </div>
+
+        <div class="bg-white/60 backdrop-blur-xl border-2 border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-[0_20px_40px_rgba(31,38,135,0.15)] hover:-translate-y-6 hover:scale-105 transition-all duration-500 group delay-200 cursor-pointer text-center">
+          <div class="w-20 h-20 mx-auto bg-blue-100 rounded-[1.5rem] flex items-center justify-center text-4xl mb-6 shadow-sm group-hover:rotate-12 transition-transform duration-300">🛡️</div>
+          <h4 class="font-bold text-gray-900 text-xl mb-3">24/7 Security</h4>
+          <p class="text-gray-700 text-sm">Round-the-clock security personnel, boom barriers, and over 200+ HD CCTV cameras ensuring zero blind spots.</p>
+        </div>
+
+        <div class="bg-white/60 backdrop-blur-xl border-2 border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-[0_20px_40px_rgba(31,38,135,0.15)] hover:-translate-y-6 hover:scale-105 transition-all duration-500 group delay-300 cursor-pointer text-center">
+          <div class="w-20 h-20 mx-auto bg-orange-100 rounded-[1.5rem] flex items-center justify-center text-4xl mb-6 shadow-sm group-hover:rotate-12 transition-transform duration-300">🥪</div>
+          <h4 class="font-bold text-gray-900 text-xl mb-3">Hygienic Cafeteria</h4>
+          <p class="text-gray-700 text-sm">A spacious dining hall serving freshly cooked, nutritionist-approved vegetarian meals and healthy snacks.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-gray-900 pt-20 pb-10 text-white relative overflow-hidden">
+        <!-- Abstract gradient orb in footer -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                
+                <!-- Brand -->
+                <div class="reveal">
+                    <a href="#" class="text-2xl font-bold text-white flex items-center gap-2 mb-6">
+                        <i class="ph-fill ph-student text-indigo-400 text-3xl"></i>
+                        Vijay High School
+                    </a>
+                    <p class="text-gray-400 mb-6 max-w-sm">
+                        Nurturing excellence and empowering the next generation of leaders through holistic education in Haryana.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-indigo-500 transition-colors">
+                            <i class="ph-fill ph-facebook-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-indigo-500 transition-colors">
+                            <i class="ph-fill ph-instagram-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-indigo-500 transition-colors">
+                            <i class="ph-fill ph-twitter-logo text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="reveal delay-100">
+                    <h4 class="text-lg font-bold mb-6 text-white tracking-wide">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="ph ph-caret-right"></i> About Us</a></li>
+                        <li><a href="#academics" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="ph ph-caret-right"></i> Academics</a></li>
+                        <li><a href="#facilities" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="ph ph-caret-right"></i> Facilities</a></li>
+                        <li><a href="#admissions" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="ph ph-caret-right"></i> Admissions</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="ph ph-caret-right"></i> Contact Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="reveal delay-200">
+                    <h4 class="text-lg font-bold mb-6 text-white tracking-wide">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 text-gray-400">
+                            <i class="ph-fill ph-map-pin text-indigo-400 text-xl mt-1"></i>
+                            <span>Vijay High School Campus,<br>Sector 14, Sonipat,<br>Haryana, India - 131001</span>
+                        </li>
+                        <li class="flex items-center gap-4 text-gray-400">
+                            <i class="ph-fill ph-phone text-indigo-400 text-xl"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center gap-4 text-gray-400">
+                            <i class="ph-fill ph-envelope text-indigo-400 text-xl"></i>
+                            <span>info@vijayhighschool.edu.in</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm reveal delay-300">
+                <p>&copy; 2026 Vijay High School, Sonipat. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. Mobile Menu Toggle ---
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const menuIcon = menuBtn.querySelector('i');
+
+            function toggleMenu() {
+                mobileMenu.classList.toggle('hidden');
+                // Change icon based on state
+                if(mobileMenu.classList.contains('hidden')) {
+                    menuIcon.classList.remove('ph-x');
+                    menuIcon.classList.add('ph-list');
+                } else {
+                    menuIcon.classList.remove('ph-list');
+                    menuIcon.classList.add('ph-x');
+                }
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+            
+            // Close mobile menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if(!mobileMenu.classList.contains('hidden')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // --- 2. Navbar Scroll Effect (Glassmorphism on scroll) ---
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass-panel', 'shadow-sm');
+                    navbar.classList.remove('bg-transparent', 'py-4');
+                    navbar.classList.add('py-2');
+                } else {
+                    navbar.classList.remove('glass-panel', 'shadow-sm', 'py-2');
+                    navbar.classList.add('bg-transparent', 'py-4');
+                }
+            });
+
+            // --- 3. Intersection Observer for Scroll Animations ---
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Stop observing once revealed
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+
+            // --- 4. Hero Image Carousel Logic ---
+            const track = document.getElementById('carousel-track');
+            const slides = track ? track.children : [];
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let autoPlayInterval;
+
+            function updateCarousel() {
+                if (!track) return;
+                
+                // Move track for smooth sliding effect
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update dots/indicators
+                indicators.forEach((ind, i) => {
+                    if(i === currentIndex) {
+                        ind.classList.add('w-8', 'bg-white');
+                        ind.classList.remove('w-3', 'bg-white/50');
+                    } else {
+                        ind.classList.remove('w-8', 'bg-white');
+                        ind.classList.add('w-3', 'bg-white/50');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                if(totalSlides === 0) return;
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                if(totalSlides === 0) return;
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+
+            function resetAutoPlay() {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
+            }
+
+            // Event Listeners for Carousel Controls
+            if(nextBtn && prevBtn && track) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetAutoPlay();
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetAutoPlay();
+                });
+
+                indicators.forEach((ind, i) => {
+                    ind.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateCarousel();
+                        resetAutoPlay();
+                    });
+                });
+
+                // Start Autoplay on load
+                resetAutoPlay();
+            }
+        });
+    </script>
+</body>
+</html>
